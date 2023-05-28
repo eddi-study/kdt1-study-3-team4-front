@@ -75,12 +75,31 @@ export default {
 
     },
     methods: {
-        onSubmit() {
-            const { ImagesPathList, name, price, vendor, details } = this
-            this.$emit('submit', { ImagesPathList, name, price, vendor, details })
+        handleFileUpload(){
+            console.log(this.files)
+
+            this.files=this.$refs.files.files
+            console.log(this.files)
+        },
+        onSubmit () {
+            let formData = new FormData()
+            this.userToken=localStorage.getItem("userToken")
+            let productInfo={
+                productName: this.productName,
+                vendor:this.vendor,
+                productPrice: this.productPrice,
+                productDetails:this.productDetails,
+                userToken:this.userToken 
+            }
+            for(let i =0; i<this.files.length; i++){
+                formData.append('imageFile', this.files[i])
+            }
+            formData.append('productInfo',new Blob([JSON.stringify(productInfo)],{type: "application/json"})
+            )              
+            this.$emit('submit', formData)
+        },
         
-        }
-    },
+    }
 }
 </script>
 <style lang="">
