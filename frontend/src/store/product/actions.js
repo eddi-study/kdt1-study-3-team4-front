@@ -43,4 +43,17 @@ export default {
         }
       })
   },
+  requestProductModifyToSpring({ }, payload) {
+    const { ImagesPathList, name, price, vendor, details} = payload
+
+    console.log("")
+    
+    return axiosInst.put(`/product/${productId}`, { ImagesPathList, name, price, vendor, details })
+      .then((res) => {
+        alert("수정 성공!")
+      })
+      .catch(() => {
+        alert('문제 발생!')
+      })
+  },
 }
