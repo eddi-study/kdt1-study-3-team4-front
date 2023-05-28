@@ -2,48 +2,36 @@
     <div>
        <form @submit.prevent="onSubmit">
            <table>
-             <tr>
-                    <td>상품 이미지</td>
+              <tr>
+                    <td class="productForm">상품명</td>
                     <td>
-                        <v-row align="center">
-                            <v-col v-for="(imagePath, idx) in productImagesPathList" :key="idx" cols="10">
-                                <!-- <v-img
-                                    :src="require(`D:/Github/kdt1-study-3-team4-back/demo/src/main/java/com/example/demo/UploadImgs/${imagePath}`)" -->
-                                <v-img
-                                    :src="require(`@/../../../kdt1-study-3-team4-back/demo/src/main/java/com/example/demo/UploadImgs/${imagePath}`)"
-                                    aspect-ratio="1" class="grey lighten-2">
-                                    <template v-slot:placeholder>
-                                        <v-row class="fill-height ma-0" align="center" justify="center">
-                                            <v-progress-circular indeterminate color="grey lighten-5" />
-                                        </v-row>
-                                    </template>
-                                </v-img>
-                            </v-col>
-                        </v-row>
+                        <input type="text" v-model="productName"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>상품명</td>
+                    <td class="productForm">판매자</td>
                     <td>
-                        <input type="text" :value="product.productName" readonly />
+                        <input type="text" v-model="vendor" />
                     </td>
                 </tr>
                 <tr>
-                    <td>가격</td>
+                    <td class="productForm">상품 가격</td>
                     <td>
-                        <input type="number" :value="product.productPrice" readonly />
+                        <input type="number" v-model="productPrice" />
                     </td>
                 </tr>
                 <tr>
-                    <td>제조사</td>
+                    <td class="productForm">상품 상세 정보</td>
                     <td>
-                        <input type="text" :value="product.vendor" readonly />
+                        <textarea 
+                        auto-grow
+                        cols="50" rows="20" v-model="productDetails" />
                     </td>
                 </tr>
                 <tr>
-                    <td>세부 사항</td>
                     <td>
-                        <textarea cols="50" rows="20" :value="product.productDetails" readonly />
+                        <input type="file" id="files" ref="files"
+                                multiple @change="handleFileUpload"/>
                     </td>
                 </tr>
             </table>
