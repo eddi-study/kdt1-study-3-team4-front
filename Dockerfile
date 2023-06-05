@@ -3,8 +3,7 @@ FROM node:18 AS build-stage
 # vue.js 애플리케이션을 정적 파일로 제공할 디렉토리를 생성합니다.
 WORKDIR /app
 COPY package*.json ./
-RUN --mount=type=cache,target=/root/.npm \
-    npm install
+RUN npm install
 COPY . .
 RUN npm run build
 
