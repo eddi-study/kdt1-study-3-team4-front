@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  frontend:
+    image: "ghcr.io/namhyunki/ket1-study-3-team4-front"
+    container_name: docker-frontend-deploy-server
+    networks:
+      - app
+
+networks:
+  app:
+      dirver: bridge
