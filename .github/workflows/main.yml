@@ -37,7 +37,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pwd
-          npm ci
+          npm install
            
       - name: Create .env.production for CD Deploy
         run: |
