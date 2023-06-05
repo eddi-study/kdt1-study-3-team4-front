@@ -39,11 +39,11 @@ jobs:
           pwd
           npm ci
            
-      # - name: Create .env.production for CD Deploy
-      #   run: |
-      #     pwd
-      #     echo "${{ secrets.CD_DEPLOY_CONFIG }}" > .env.production
-      #     cat .env.production
+      - name: Create .env.production for CD Deploy
+        run: |
+          pwd
+          echo "${{ secrets.CD_DEPLOY_CONFIG }}" > .env.production
+          cat .env.production
          
       ## docker build & push to production
       - name: Docker build & push to prod
