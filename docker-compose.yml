@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   frontend:
-    image: "ghcr.io/namhyunki/kdt1-study-3-team4-front"
+    image: "ghcr.io/namhyunki/kdt1-study-3-team4-front-server"
     container_name: docker-frontend-study3_team4
     networks:
       - app
