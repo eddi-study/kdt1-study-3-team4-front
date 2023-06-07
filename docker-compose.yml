@@ -4,7 +4,7 @@ services:
     image: ghcr.io/namhyunki/kdt1-study-3-team4-front:latest
     container_name: docker-frontend-deploy-server
     ports:
-      - "80:80"
+      - "8080:8080"
     networks:
       - app
 
