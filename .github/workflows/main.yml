@@ -20,7 +20,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-northeast-2
-    
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -28,7 +28,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18'
-        
+
     - name: Cache dependencies
       id: cache
       uses: actions/cache@v3
@@ -64,7 +64,7 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         source: "./dist/*"
         target: "/home/ec2-user/actions-tmp-repo"
-        
+
     - name: Remove Github Actions IP From Security Group
       run: |
         aws ec2 revoke-security-group-ingress --group-id ${{ secrets.AWS_SG_ID }} --protocol tcp --port 22 --cidr ${{ steps.ip.outputs.ipv4 }}/32
